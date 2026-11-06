@@ -3,13 +3,15 @@ export function esPinValido(pin) {
         return false;
     }
 
-    const regex = /^([0-9]{4}|[0-9]{6})$/;
-    if (!regex.test(pin)) {
+    if (pin.length !== 4 && pin.length !== 6) {
         return false;
     }
 
-    const todosIguales = pin.split('').every(digito => digito === pin[0]);
-    if (todosIguales) {
+    if (!/^[0-9]+$/.test(pin)) {
+        return false;
+    }
+
+    if (new Set(pin).size === 1) {
         return false;
     }
 
