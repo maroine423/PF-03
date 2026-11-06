@@ -1,5 +1,4 @@
-
-name: Tests Node.js
+name: CI - Tests
 
 on:
   push:
@@ -10,6 +9,7 @@ on:
       - feature-code
       - impl-fibonacci
       - impl-pin
+
   pull_request:
     branches:
       - feature-code
@@ -19,8 +19,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Obtener el repositorio
+      - name: Obtener repositorio
         uses: actions/checkout@v4
 
       - name: Configurar Node.js 24
