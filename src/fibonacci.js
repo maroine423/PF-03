@@ -1,3 +1,4 @@
+
 export function fibonacci(n) {
   if (
     typeof n !== 'number' ||
