@@ -1,36 +1,51 @@
+
 import { describe, it, expect } from 'vitest';
 import { esPinValido } from '../src/pin.js';
 
-describe('Función esPinValido(pin)', () => {
-  it('debe retornar true para pines válidos de 4 o 6 dígitos sin ser todos iguales', () => {
-    expect(esPinValido("0123")).toBe(true);
-    expect(esPinValido("1234")).toBe(true);
-    expect(esPinValido("000001")).toBe(true);
+describe('esPinValido(pin)', () => {
+  describe('Casos válidos', () => {
+    it('debe aceptar un PIN de 4 dígitos', () => {
+      expect(esPinValido('1234')).toBe(true);
+    });
+
+    it('debe aceptar un PIN de 6 dígitos', () => {
+      expect(esPinValido('123456')).toBe(true);
+    });
+
+    it('debe aceptar ceros iniciales', () => {
+      expect(esPinValido('0123')).toBe(true);
+    });
+
+    it('debe aceptar ceros cuando no todos son iguales', () => {
+      expect(esPinValido('000001')).toBe(true);
+    });
   });
 
-  it('debe retornar false para longitudes incorrectas o cadena vacía', () => {
-    expect(esPinValido("")).toBe(false);
-    expect(esPinValido("123")).toBe(false);
-    expect(esPinValido("12345")).toBe(false);
-    expect(esPinValido("1234567")).toBe(false);
-  });
+  describe('Casos inválidos', () => {
+    it.each([
+      '', '123', '12345', '1234567'
+    ])('debe rechazar longitudes incorrectas: "%s"', (pin) => {
+      expect(esPinValido(pin)).toBe(false);
+    });
 
-  it('debe retornar false si todos los dígitos son iguales', () => {
-    expect(esPinValido("1111")).toBe(false);
-    expect(esPinValido("888888")).toBe(false);
-  });
+    it.each([
+      '1111', '888888', '0000', '999999'
+    ])('debe rechazar PIN con todos los dígitos iguales: "%s"', (pin) => {
+      expect(esPinValido(pin)).toBe(false);
+    });
 
-  it('debe retornar false para caracteres no permitidos (letras, espacios, signos)', () => {
-    expect(esPinValido("12a4")).toBe(false);
-    expect(esPinValido(" 1234")).toBe(false);
-    expect(esPinValido("12 34")).toBe(false);
-  });
+    it.each([
+      '12a4', '12A4', '12 34', ' 1234',
+      '1234 ', '12-34', '１２３４'
+    ])('debe rechazar caracteres no permitidos: "%s"', (pin) => {
+      expect(esPinValido(pin)).toBe(false);
+    });
 
-  it('debe retornar false para tipos incorrectos (null, undefined, números, booleanos, arrays)', () => {
-    expect(esPinValido(null)).toBe(false);
-    expect(esPinValido(undefined)).toBe(false);
-    expect(esPinValido(1234)).toBe(false);
-    expect(esPinValido(true)).toBe(false);
-    expect(esPinValido(["1", "2", "3", "4"])).toBe(false);
+    it.each([
+      null, undefined, 1234, true, false, {},
+      [], ['1', '2', '3', '4']
+    ])('debe rechazar tipos incorrectos: %s', (pin) => {
+      expect(esPinValido(pin)).toBe(false);
+    });
   });
 });
