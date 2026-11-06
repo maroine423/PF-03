@@ -1,34 +1,42 @@
-# PF03 - Actividad 1: TDD con Node.js, Vitest y CI
+# PF03 A1 - TDD con Node.js, Vitest y CI
+## Descripción
+Proyecto de pruebas de software mediante TDD (Test-Driven Development), utilizando Node.js 24, Vitest y GitHub Actions.
+El proyecto implementa dos funciones:
 
-## Objetivo
-
-Desarrollar dos funciones aplicando TDD (Red → Green → Refactor),
-revisando el trabajo del compañero mediante Pull Requests y
-automatizando las pruebas con GitHub Actions.
-
-## Funciones
-
-- `fibonacci(n)`: devuelve el término n de la sucesión de Fibonacci
-  (enteros de 0 a 78).
-- `esPinValido(pin)`: comprueba que un PIN sea una cadena de 4 o 6
-  dígitos y que no sean todos iguales.
-
-## Requisitos
+- `fibonacci(n)`: calcula el término de Fibonacci indicado.
+- `esPinValido(pin)`: comprueba si un PIN cumple las condiciones establecidas.
+## Tecnologías utilizadas
 
 - Node.js 24 LTS
-
+- JavaScript ES Modules
+- Vitest
+- Git y GitHub
+- GitHub Actions
 ## Instalación
+Clonar el repositorio y ejecutar:
+```bash
+npm ci
+```
+## Ejecución de pruebas
+Para ejecutar todos los tests:
 
-    npm ci
+```bash
+npm test
+```
+Para ejecutar Vitest en modo observación:
+```bash
+npm run test:watch
+```
+## Desarrollo mediante TDD
+Se aplica el ciclo:
+1. Red: escribir pruebas que inicialmente fallan.
+2. Green: implementar el código necesario para superar las pruebas.
+3. Refactor: mejorar el código manteniendo todas las pruebas superadas.
 
-## Pruebas
+## Autoría y reparto del trabajo
 
-    npm test
-
-Ejecuta una pasada completa de Vitest y termina.
+Actividad realizada individualmente.
+- Alumno/a A: [Marwane] 
 
 ## Integración continua
-
-GitHub Actions ejecuta `npm ci` y `npm test` en cada push a las
-ramas del flujo y en cada Pull Request hacia `feature-code`,
-`development` y `main`.
+GitHub Actions ejecuta automáticamente las pruebas mediante Node.js 24, `npm ci` y `npm test`.
