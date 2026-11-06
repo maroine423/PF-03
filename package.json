@@ -1,13 +1,12 @@
 {
-  "name": "pf03",
+  "name": "pf03-a1",
   "version": "1.0.0",
-  "description": "PF03: TDD con Node.js, Vitest y CI",
+  "description": "Proyecto TDD con Node.js, Vitest e Integracion Continua",
   "type": "module",
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "devDependencies": {
-    "vitest": "^la-que-ponga-npm"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
