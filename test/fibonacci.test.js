@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { fibonacci } from '../src/fibonacci.js';
 
-describe('Función fibonacci(n)', () => {
-  it('debe devolver 0 para n = 0', () => {
+describe('Función fibonacci(n)', () => {  it('debe devolver 0 para n = 0', () => {
     expect(fibonacci(0)).toBe(0);
   });
 
