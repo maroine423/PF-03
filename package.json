@@ -8,6 +8,6 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
-    "vitest": "^la-que-ponga-npm"
+    "vitest": "^5.1.0"
   }
 }
